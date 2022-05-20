@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Time Update";
+}
+<form action="/Times/Save" method="post">
+    @{ if (ViewBag.message != null)
+    {
+    <div class="alert alert-danger">@ViewBag.message</div>
+    }
+    }
+    <div class="mb-3">
+        <label class="form-label">MovieTime</label>
+        <input type="text" name="MovieTime" class="form-control" value="@ViewBag.movietime.MovieTime">
+    </div>
+    <input type="hidden" name="Id" value="@ViewBag.movietime.Id">
+    <button type="submit" class="btn btn-success  col-md-3">Update</button>
+</form>

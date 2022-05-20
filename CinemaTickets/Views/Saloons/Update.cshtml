@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Saloon Update";
+}
+<form action="/Saloons/Save" method="post">
+    @{ if (ViewBag.message != null)
+    {
+    <div class="alert alert-danger">@ViewBag.message</div>
+    }
+    }
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" name="Name" class="form-control" value="@ViewBag.saloon.Name">
+    </div>
+    <input type="hidden" name="Id" value="@ViewBag.saloon.Id">
+    <button type="submit" class="btn btn-success  col-md-3">Update</button>
+</form>

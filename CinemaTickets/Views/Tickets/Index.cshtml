@@ -1,0 +1,26 @@
+﻿@using WebApi.Models
+@model List<Movie>
+@{
+    ViewData["Title"] = "Buy Tickets";
+}
+
+<a href="/Movies/Add" class="btn btn-sm btn-primary">+</a>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (MovieDto movie in ViewBag.movies)
+    {
+    <div class="col-md-4 col-sm-12">
+        <div class="card h-100">
+            <img src="@movie.ImageUrl" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">@movie.Name</h5>
+                <p class="card-text">"IMDB:"@movie.IMDB</p>
+                <p class="card-text">@movie.Saloon</p>
+                <p class="card-text">@movie.Seanse</p>
+                <p class="card-text">@movie.Description.Substring(0, (movie.Description.Length>110)?110: movie.Description.Length)...</p>
+               
+                <a class="btn btn-sm btn-dark float-right mr-1" value="@movie.Id" href="/Tickets/Add/">TO RESERVE</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>

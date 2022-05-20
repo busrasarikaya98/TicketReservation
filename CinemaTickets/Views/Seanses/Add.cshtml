@@ -1,0 +1,17 @@
+﻿-@using WebApi.Models
+@{
+    ViewData["Title"] = "Time Add";
+}
+
+<form action="/Seanses/Save" method="post">
+    @{ if (ViewBag.message != null)
+        {
+            <div class="alert alert-danger">@ViewBag.message</div>
+        }
+    } 
+    <div class="mb-3">
+        <label class="form-label">MovieTime</label>
+        <input type="text" name="MovieTime" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success  col-md-3">Add</button>
+</form>

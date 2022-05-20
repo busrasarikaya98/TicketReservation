@@ -1,0 +1,57 @@
+﻿@using WebApi.Models
+@{
+    ViewData["Title"] = "Movie Add";
+}
+
+<form action="/Movies/Save" method="post">
+    @{ if (ViewBag.message != null)
+        {
+            <div class="alert alert-danger">@ViewBag.message</div>
+        }
+    } 
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" name="Name" class="form-control">
+    </div>
+        <div class="mb-3">
+        <label class="form-label">IMDB</label>
+        <input type="text" name="IMDB" class="form-control">
+    </div>
+        <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input type="text" name="Description" class="form-control">
+    </div>   
+    <div class="mb-3">
+        <label class="form-label">Image</label>
+        <input type="text" name="ImageUrl" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Saloon</label>
+        <select name="SaloonId" class="form-control">
+            @foreach (Saloon saloon in ViewBag.saloons)
+            {
+                <option value="@saloon.Id">@saloon.Name</option>
+            }
+        </select>
+    </div>
+        <div class="mb-3">
+        <label class="form-label">Seanse</label>
+        <select name="SeanseId" class="form-control">
+            @foreach (Seanse seanse in ViewBag.seanses)
+            {
+                <option value="@seanse.Id">@seanse.MovieTime</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <select name="PriceId" class="form-control">
+            @foreach (Price price in ViewBag.prices)
+            {
+                <option value="@price.Id">@price.MoviePrice</option>
+            }
+        </select>
+    </div> 
+    </div> 
+    <button type="submit" class="btn btn-success  col-md-3">Add</button>
+</form>

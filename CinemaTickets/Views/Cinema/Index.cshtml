@@ -1,0 +1,29 @@
+﻿@using WebApi.Models
+@model List<Saloon>
+@{
+    ViewData["Title"] = "Cinemas Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sinema Salonları</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cinema in Model)
+        {
+            <tr>
+                <td>@cinema.Id</td>
+                <td>@cinema.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

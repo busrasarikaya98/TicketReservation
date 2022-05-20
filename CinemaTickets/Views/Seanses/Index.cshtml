@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Seanses Page";
+}
+<a class="btn btn-sm btn-primary text-light" asp-controller="Seanses" asp-action="Add">+</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var time in ViewBag.seanses)
+        {
+        <tr>
+            <td>@time.Id</td>
+            <td>@time.MovieTime</td>
+            <td>
+                <a class="btn btn-link" href="/Times/Update/@time.Id">Edit</a>
+                <a class="btn btn-link" href="/Times/Delete/@time.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-sm btn-primary text-light" asp-controller="Admins" asp-action="Index">BACK</a>

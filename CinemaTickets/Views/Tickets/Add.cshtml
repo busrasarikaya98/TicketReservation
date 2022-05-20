@@ -1,0 +1,137 @@
+﻿@using WebApi.Models
+@using WebApi.DataAccess
+
+@{
+    ViewData["Title"] = "Ticket Add";
+}
+<style>
+    /*.form-control{
+    background-color:lightpink;
+    }*/
+ </style>
+<form action="/Tickets/Save" method="post">
+    @{
+        if (ViewBag.message != null)
+        {
+            <div class="alert alert-danger">@ViewBag.message</div>
+        }
+    }
+    <div class="mb-3">
+        <label class="form-label">Movie</label>
+        <select id="MovieId" name="MovieId" class="form-control">
+
+            @foreach (Movie movie in ViewBag.movies)
+            {
+                <option value="@movie.Id">@movie.Name</option>
+
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Saloon</label>
+        <select id="SaloonId" name="SaloonId" class="form-control">
+            @foreach (Saloon saloon in ViewBag.saloons)
+            {
+                <option value="@saloon.Id">@saloon.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Seanse</label>        
+        <select id="SeanseId" name="SeanseId" class="form-control">
+            <option font-color="blue">Please Select Seanse</option>
+            @foreach (Seanse seanse in ViewBag.seanses)
+            {
+                <option value="@seanse.Id">@seanse.MovieTime</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Seat</label>
+        <select name="SeatId" class="form-control">
+            @foreach (Seat seat in ViewBag.seats)
+            {
+                <option value="@seat.Id">@seat.Number</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Please enter your e-mail for ticket details</label>
+        <input type="email" name="EMailDetail" id="EMailDetail" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <select id="PriceId" name="PriceId" class="form-control">
+            @foreach (Price price in ViewBag.prices)
+            {
+                <option value="@price.Id">@price.MoviePrice</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success  col-md-1" color="blue" weight=10>TO RESERVE</button>
+</form>
+<script>
+    var movieDOM=document.getElementById("MovieId");
+    var seanseDOM = document.getElementById("SeanseId");
+    var priceDOM = document.getElementById("PriceId");
+    var saloonDOM = document.getElementById("SaloonId");
+    //movieDOM.onchange=function(event){
+    //    console.log(this.value);
+    //    var xhr = new XMLHttpRequest();
+    //    xhr.open('GET', '/Tickets/GetSeanse?movieId=' + this.value, true);
+    //    xhr.onreadystatechange = function() {
+    //        if (xhr.readyState == 4) {
+    //            var data = JSON.parse(xhr.responseText);
+    //            seanseDOM.innerHTML="";
+    //            var option = document.createElement("option");
+    //            option.value = data.id;
+    //            option.text = data.movieTime;
+    //            seanseDOM.appendChild(option);
+    //        }
+    //    }
+    //    xhr.send();
+    //}
+    movieDOM.onchange=function(event){
+        console.log(this.value);
+        var xhr = new XMLHttpRequest();       
+        xhr.open('GET', '/Tickets/GetSeanse?movieId=' + this.value, true);       
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                var data = JSON.parse(xhr.responseText);
+                seanseDOM.innerHTML="";
+                var option = document.createElement("option");
+                option.value = data.id;
+                option.text = data.movieTime;
+                seanseDOM.appendChild(option);
+            }
+        }
+        xhr.send();
+        var xhr2 = new XMLHttpRequest();
+        xhr2.open('GET', '/Tickets/GetPrice?movieId=' + this.value, true);
+        xhr2.onreadystatechange = function() {
+            if (xhr2.readyState == 4) {
+                var data = JSON.parse(xhr2.responseText);
+                priceDOM.innerHTML="";
+                var option = document.createElement("option");
+                option.value = data.id;
+                option.text = data.moviePrice;
+                priceDOM.appendChild(option);
+            }
+        }
+        xhr2.send();
+        var xhr3 = new XMLHttpRequest();
+        xhr3.open('GET', '/Tickets/GetSaloon?movieId=' + this.value, true);
+        xhr3.onreadystatechange = function() {
+            if (xhr3.readyState == 4) {
+                var data = JSON.parse(xhr3.responseText);
+                saloonDOM.innerHTML="";
+                var option = document.createElement("option");
+                option.value = data.id;
+                option.text = data.name;
+                saloonDOM.appendChild(option);
+            }
+        }
+        xhr3.send();
+    }
+</script>
+@*ASP.NET CORE MVC (.NET 5) | Build a Complete eCommerce App*@

@@ -1,0 +1,147 @@
+﻿@using WebApi.Models
+@model Userr
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SimpleAdmin - Responsive Admin Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/adminn/assets/images/favicon.ico">
+
+    <!-- App css -->
+    <link href="~/adminn/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/adminn/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/adminn/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/adminn/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/adminn/assets/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="wrapper-page">
+
+                        <div class="m-t-40 card-box">
+                            @using (Html.BeginForm("SignIn","Accounts"))
+                            {
+                                <button class="btn btn-dark">GERİ</button>
+                            }
+                            <div class="text-center">
+                                <h2 class="text-uppercase m-t-0 m-b-30">
+                                    <a href="index.html" class="text-success">
+                                        <span><img src="~/cinemahtml/images/yellowticket.jpg" alt="" height="30"></span>
+                                    </a>
+                                </h2>
+                                <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->
+                            </div>
+                            <div class="account-content">
+                                <form method="post" asp-controller="Accounts" asp-action="SignUp" class="form-horizontal">
+                                    <span class="alert-danger m-b-5">
+                                        @Html.ValidationMessage("Hata1")
+                                    </span>
+
+                                    <div class="form-group m-b-20">
+                                        <div class="col-12">
+                                            <label for="FullName">İsim ve Varsa İkinci İsim</label>
+                                            <input class="form-control" type="text" id="FullName" name="FullName" required="" placeholder="Ali" value=@Model.FullName>
+                                            <span asp-validation-for="@Model.FullName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-20">
+                                        <div class="col-12">
+                                            <label for="Surname">Soyisim</label>
+                                            <input class="form-control" name="Surname" type="text" required="" id="Surname" placeholder="Veli" value=@Model.Surname>
+                                            <span asp-validation-for="@Model.Surname" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-b-20">
+                                        <div class="col-12">
+                                            <label for="Emaill">E-posta Adresi</label>
+                                            <input class="form-control" type="email" name="Emaill" id="Emaill" required="" placeholder="ali@hotmail.com" value=@Model.Emaill>
+                                            <span asp-validation-for="@Model.Emaill" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-b-20">
+                                        <div class="col-12">
+                                            <label for="Passwordd">Şifre</label>
+                                            <input class="form-control" name="Passwordd" type="password" required="" id="Passwordd" placeholder="Şifre">
+                                            <span asp-validation-for="@Model.Passwordd" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-20">
+                                        <div class="col-12">
+                                            <label for="PasswordRepeatt">Şifre Tekrarı</label>
+                                            <input class="form-control" name="PasswordRepeatt" type="password" required="" id="PasswordRepeatt" placeholder="Şifre">
+                                            <span asp-validation-for="@Model.PasswordRepeatt" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-b-30">
+                                        <div class="col-12">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox5" type="checkbox" required>
+                                                <label for="checkbox5" >
+                                                    Kabul ediyorum <a href="https://localhost:44318/Accounts/TermsandConditions" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">Hüküm ve Koşullar</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group account-btn text-center m-t-10">
+                                        <div class="col-12">
+                                            <button class="btn btn-lg btn-primary btn-block" type="submit">Kaydol</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                        <!-- end card-box-->
+
+
+                        <div class="row m-t-50">
+                            <div class="col-sm-12 text-center">
+                                <p class="text-muted">Zaten bir hesabın var mı?  <a asp-controller="Accounts" asp-action="SignIn" class="text-dark m-l-5">Giriş</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end wrapper -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery  -->
+    <script src="~/adminn/assets/js/jquery.min.js"></script>
+    <script src="~/adminn/assets/js/popper.min.js"></script>
+    <script src="~/adminn/assets/js/bootstrap.min.js"></script>
+    <script src="~/adminn/assets/js/metisMenu.min.js"></script>
+    <script src="~/adminn/assets/js/waves.js"></script>
+    <script src="~/adminn/assets/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="~/adminn/assets/js/jquery.core.js"></script>
+    <script src="~/adminn/assets/js/jquery.app.js"></script>
+
+</body>
+</html>

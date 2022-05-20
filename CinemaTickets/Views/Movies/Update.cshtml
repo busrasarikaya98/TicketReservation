@@ -1,0 +1,42 @@
+﻿@using WebApi.Models
+@{
+    ViewData["Title"] = "Movie Add";
+}
+
+<form action="/Movies/Save" method="post">
+    @{ if (ViewBag.message != null)
+        {
+            <div class="alert alert-danger">@ViewBag.message</div>
+        }
+    } 
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" name="Name" class="form-control" @ViewBag.movie.Name>
+    </div>
+        <div class="mb-3">
+        <label class="form-label">IMDB</label>
+        <input type="text" name="IMDB" class="form-control" @ViewBag.movie.IMDB>
+    </div>
+        <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input type="text" name="Description" class="form-control" @ViewBag.movie.Description>
+    </div>   
+    <div class="mb-3">
+        <label class="form-label">Image</label>
+        <input type="text" name="ImageUrl" class="form-control" @ViewBag.movie.ImageUrl>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Saloon</label>
+        <select name="SaloonId" class="form-control">
+            <option value="1" selected>Saloon</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Time</label>
+        <select name="TimeId" class="form-control">
+            <option value="1" selected>Time</option>
+        </select>
+    </div>
+    <input type="hidden" name="Id" value="@ViewBag.movie.Id"/>
+    <button type="submit" class="btn btn-success  col-md-3">Add</button>
+</form>

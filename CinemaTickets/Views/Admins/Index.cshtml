@@ -1,0 +1,31 @@
+﻿@using WebApi.Models
+@model List<Movie>
+@{
+    ViewData["Title"] = "Admins Page";
+}
+
+<a href="/Saloons/Index" class="btn btn-sm btn-dark">SALOONS</a>
+<a href="/Seanses/Index" class="btn btn-sm btn-dark">SEANSES</a>
+<a href="/Seats/Index" class="btn btn-sm btn-dark">SEATS</a>
+<a href="/Movies/Index" class="btn btn-sm btn-dark">MOVIES</a>
+<a href="/Prices/Index" class="btn btn-sm btn-dark">PRICES</a>
+@*<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (MovieDto movie in ViewBag.movies)
+    {
+    <div class="col-md-4 col-sm-12">
+        <div class="card h-100">
+            <img src="@movie.ImageUrl" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">@movie.Name</h5>
+                <p class="card-text">"IMDB:"@movie.IMDB</p>
+                <p class="card-text">@movie.Description.Substring(0, (movie.Description.Length>110)?110: movie.Description.Length)...</p>
+                <p class="card-text">@movie.Saloon</p>
+                <p class="card-text">@movie.Time</p>
+                
+                <a class="btn btn-sm btn-primary float-right" href="/Movies/Delete/@movie.Id">DELETE</a>
+                <a class="btn btn-sm btn-dark float-right mr-1" href="/Movies/Update/@movie.Id">UPDATE</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>*@
